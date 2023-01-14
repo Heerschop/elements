@@ -6,8 +6,7 @@
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
-    "style": "prettier --write ."
-
+    "style:write": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -22,5 +21,25 @@
   "devDependencies": {
     "parcel": "^2.8.2",
     "prettier": "^2.8.3"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "quoteProps": "preserve",
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "overrides": [
+      {
+        "files": "*.json",
+        "options": {
+          "semi": true,
+          "printWidth": 24
+        }
+      }
+    ]
   }
 }
