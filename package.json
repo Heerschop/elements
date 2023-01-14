@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
-    "style:write": "prettier --write ."
+    "style:write": "prettier --write . && eslint --fix"
   },
   "repository": {
     "type": "git",
