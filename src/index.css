@@ -3,18 +3,18 @@ body {
   font-family: 'Varela Round', sans-serif;
   font-size: var(--S6);
   color: var(--prim-text);
-  background: var(--primary);
+  background: var(--prim-main);
 }
 
 :root {
   font-size: 62.5%;
 
-  --primary: #383a3f;
+  --prim-main: #383a3f;
   --prim-light: #62646a;
   --prim-dark: #1f2124;
   --prim-text: #ffffffe0;
 
-  --secondary: #f68657;
+  --sec-main: #f68657;
   --sec-light: #f6b352;
   --sec-dark: #be572c;
   --sec-text: #000000e0;
