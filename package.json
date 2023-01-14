@@ -24,6 +24,7 @@
     "eslint": "^8.31.0",
     "lit": "^2.6.1",
     "parcel": "^2.8.2",
+    "parcel-reporter-files": "github:Heerschop/parcel-reporter-files#main",
     "prettier": "^2.8.3"
   },
   "prettier": {
@@ -45,5 +46,8 @@
         }
       }
     ]
+  },
+  "parcel-reporter-files": {
+    "remove": "*"
   }
 }
