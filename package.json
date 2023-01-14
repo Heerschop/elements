@@ -1,0 +1,26 @@
+{
+  "name": "elements",
+  "source": "src/index.html",
+  "version": "1.0.0",
+  "description": "HTML Elements",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
+    "style": "prettier --write ."
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heerschop/elements.git"
+  },
+  "author": "Bas Heerschop",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Heerschop/elements/issues"
+  },
+  "homepage": "https://github.com/Heerschop/elements#readme",
+  "devDependencies": {
+    "parcel": "^2.8.2",
+    "prettier": "^2.8.3"
+  }
+}
