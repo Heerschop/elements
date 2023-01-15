@@ -20,6 +20,7 @@
     "@storybook/html": "^6.5.15",
     "@storybook/manager-webpack4": "^6.5.15",
     "@storybook/testing-library": "^0.0.13",
+    "@storybook/types": "^7.0.0-alpha.44",
     "babel-loader": "^8.3.0",
     "storybook-dark-mode": "^2.0.5"
   }
