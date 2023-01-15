@@ -17,7 +17,12 @@ export const parameters = {
   docs: {
     container: DocsContainer,
     source: {
-      excludeDecorators: true,
+      //excludeDecorators: true,
+      //type: 'dynamic',
+      //excludeDecorators: true,
     },
+    //transformSource: (source, { title }) => {
+    //  return source.replaceAll('app-flex', title.substring(title.lastIndexOf('/') + 1));
+    //}
   },
 };

@@ -1,4 +1,4 @@
-import '../../dist/index.fe72daa7';
+import '../../dist/index.6d5e3308';
 import { Story } from '@storybook/html';
 import { html } from '../common';
 
@@ -25,6 +25,6 @@ const Template: Story<{ slot: HTMLSlotElement | string; disabled: boolean }> = (
 export const Button = Template.bind({});
 
 Button.args = {
-  disabled: true,
+  disabled: false,
   slot: 'Button',
 };
