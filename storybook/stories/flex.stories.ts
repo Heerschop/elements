@@ -1,18 +1,19 @@
 import '../../dist/index.71e09ba4';
 import { Story, Meta } from '@storybook/html';
 import { html } from '../common';
+//import { withControls } from '@storybook/addon-controls';
 
 export default {
   title: 'Primitives/Flex',
 
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
   argTypes: {
-    direction: { control: { type: 'select' } },
-    gap: { control: { type: 'select' } },
-    align: { control: { type: 'select' } },
-    justify: { control: { type: 'select' } },
-    wrap: { control: { type: 'select' } },
-    disabled: { control: 'boolean' },
+    // direction: { control: { type: 'select' } },
+    // gap: { control: { type: 'select' } },
+    // align: { control: { type: 'select' } },
+    // justify: { control: { type: 'select' } },
+    // wrap: { control: { type: 'select' } },
+    // disabled: { control: 'boolean' },
   },
   decorators: [
     story => {
@@ -41,19 +42,19 @@ export default {
         <div class="decorator">${story()}</div>`;
     },
   ],
-} as Meta;
+} as Meta<IStory>;
 
 interface IStory {
-  direction?: 'row' | 'column';
-  gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13;
-  align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
-  justify?: 'start' | 'center' | 'end' | 'between' | 'evenly';
-  wrap?: 'wrap' | 'nowrap' | 'reverse';
+  direction: 'row' | 'column';
+  gap: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13;
+  align: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
+  justify: 'start' | 'center' | 'end' | 'between' | 'evenly';
+  wrap: 'wrap' | 'nowrap' | 'reverse';
 }
 
-const Template: Story<IStory> = ({ ...args }) => {
+const Template: Story<IStory> = args => {
   return html`
-    <app-flex>
+    <app-flex gap=${args.gap} align=${args.align}>
       <div>1</div>
       <div>2</div>
       <div>3</div>
@@ -64,4 +65,10 @@ const Template: Story<IStory> = ({ ...args }) => {
 
 export const Flex = Template.bind({});
 
-Flex.args = {};
+Flex.args = {
+  direction: 'row',
+  gap: 0,
+  align: 'start',
+  justify: 'start',
+  wrap: 'wrap',
+};

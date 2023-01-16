@@ -13,6 +13,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-controls": "^6.5.15",
     "@storybook/addon-essentials": "^6.5.15",
     "@storybook/addon-interactions": "^6.5.15",
     "@storybook/addon-links": "^6.5.15",
@@ -21,7 +22,9 @@
     "@storybook/manager-webpack4": "^6.5.15",
     "@storybook/testing-library": "^0.0.13",
     "@storybook/types": "^7.0.0-alpha.44",
+    "@types/js-beautify": "^1.13.3",
     "babel-loader": "^8.3.0",
+    "js-beautify": "^1.14.7",
     "storybook-dark-mode": "^2.0.5"
   }
 }

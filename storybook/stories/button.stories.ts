@@ -9,12 +9,12 @@ export default {
     //backgroundColor: { control: 'color' },
     //label: { control: 'text' },
     //onClick: { action: 'onClick' },
-    disabled: { control: 'boolean' },
+    //disabled: { control: 'boolean' },
     // size: {
     //   control: { type: 'select' },
     //   options: ['small', 'medium', 'large'],
     // },
-    slot: { control: 'text' },
+    //slot: { control: 'text' },
   },
 };
 
