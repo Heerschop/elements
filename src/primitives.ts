@@ -1,1 +1,2 @@
-export * from './primitives/button/button';
+export * from './primitives/button';
+export * from './primitives/flex';
