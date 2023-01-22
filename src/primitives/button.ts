@@ -6,7 +6,7 @@ const elementPrefix = document?.currentScript?.attributes.getNamedItem?.('prefix
 @customElement(elementPrefix + '-button')
 export class ButtonElement extends LitElement {
   @property({ type: Boolean })
-  disabled: boolean = false;
+  disabled?: boolean = false;
 
   static styles = css`
     /* :host {
@@ -39,7 +39,7 @@ export class ButtonElement extends LitElement {
 
   render() {
     return html`
-      <button .disabled=${this.disabled}>
+      <button .disabled=${!!this.disabled}>
         <slot>button</slot>
       </button>
     `;

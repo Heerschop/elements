@@ -2,10 +2,18 @@
 
 HTML Elements
 
-
+### Basic Setup
 ```bash
+# Build and Watch Lit Elemets
+npm install
 npm start
 
-npx lite-serve
-open http://localhost:3000/example/index.html
+# Build and Watch Stortbook
+cd storybook
+npm install
+npm start
+
+# Run Elemets Example
+npx lite-server
+# Open: http://localhost:3000/example/index.html
 ```
