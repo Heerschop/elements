@@ -17,26 +17,27 @@ declare global {
 }
 
 //const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+/* <app-flex direction='column'>
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+</app-flex> */
 
 export const Button = ({}: StoryElement = {}) => {
-  return (
-    <div>
-      <app-button></app-button>
-      {/* <app-flex direction='column'>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-      </app-flex> */}
-    </div>
-  );
+  return <app-button></app-button>;
 };
-
-type aa = (aa: StoryElement) => JSX.Element;
 
 export default {
   title: 'Primitives',
   component: Button,
+  decorators: [
+    Story => (
+      <div>
+        <Story />
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = args => Button(args);
