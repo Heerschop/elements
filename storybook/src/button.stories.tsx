@@ -1,6 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import '../../dist/primitives';
-import { FlexElement, ButtonElement } from '../../dist/primitives';
+import { ButtonElement } from '../../dist/primitives';
+
+// https://www.npmjs.com/package/@lit-labs/react
+
 
 type StoryElement = Pick<ButtonElement, 'disabled'> & { children?: React.ReactNode };
 
@@ -16,16 +19,8 @@ declare global {
   }
 }
 
-//const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-/* <app-flex direction='column'>
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-  <div>4</div>
-</app-flex> */
-
-export const Button = ({}: StoryElement = {}) => {
-  return <app-button></app-button>;
+export const Button = ({ disabled, ...args }: StoryElement = {}) => {
+  return <app-button disabled={disabled} {...args}></app-button>;
 };
 
 export default {
@@ -44,6 +39,4 @@ const Template: ComponentStory<typeof Button> = args => Button(args);
 
 export const button = Template.bind({});
 
-button.args = {
-  disabled: false,
-};
+button.args = {};

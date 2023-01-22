@@ -9,10 +9,6 @@ export class ButtonElement extends LitElement {
   disabled?: boolean = false;
 
   static styles = css`
-    /* :host {
-      display: flex;
-      flex-direction: column;
-    } */
     button {
       display: block;
       background: var(--sec-light);
