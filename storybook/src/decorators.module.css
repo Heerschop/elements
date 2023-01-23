@@ -43,6 +43,13 @@
   border-radius: var(--S4);
 }
 
+.icon-decorator app-icon:hover {
+  transform: scale(2.5);
+  background: #ffffff10;
+  border: 0.1rem solid var(--prim-text);
+  transition: all 50ms ease-in-out;
+}
+
 .icon-decorator span {
   text-align: center;
   font-weight: bold;

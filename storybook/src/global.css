@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Varela Round', sans-serif;
-  font-size: var(--S6);
+  font-size: var(--S5);
   color: var(--prim-text);
   background: var(--prim-main);
 }
