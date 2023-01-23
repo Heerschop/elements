@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import '../../dist/primitives';
 import { ButtonElement } from '../../dist/primitives';
+import { normalize } from './common';
 
 // https://www.npmjs.com/package/@lit-labs/react
-
 
 type StoryElement = Pick<ButtonElement, 'disabled'> & { children?: React.ReactNode };
 
@@ -19,9 +19,7 @@ declare global {
   }
 }
 
-export const Button = ({ disabled, ...args }: StoryElement = {}) => {
-  return <app-button disabled={disabled} {...args}></app-button>;
-};
+export const Button = ({ ...args }: StoryElement = {}) => <app-button {...args}></app-button>;
 
 export default {
   title: 'Primitives',
@@ -35,7 +33,7 @@ export default {
   ],
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = args => Button(args);
+const Template: ComponentStory<typeof Button> = args => Button(normalize(args));
 
 export const button = Template.bind({});
 

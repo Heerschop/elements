@@ -17,3 +17,8 @@ npm start
 npx lite-server
 # Open: http://localhost:3000/example/index.html
 ```
+
+### Update Packages
+```bash
+npx npm-check-updates
+```
