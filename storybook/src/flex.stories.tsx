@@ -5,6 +5,8 @@ import { FlexElement } from '../../dist/primitives';
 
 type StoryElement = Pick<FlexElement, 'direction' | 'gap' | 'align' | 'justify' | 'wrap'> & {
   children?: React.ReactNode;
+  style?: React.CSSProperties | undefined;
+  class?: string | undefined;
 };
 
 declare global {

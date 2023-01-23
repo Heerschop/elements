@@ -1,3 +1,4 @@
+import classes from './decorators.module.css';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import '../../dist/primitives';
 import { IconElement } from '../../dist/primitives';
@@ -10,13 +11,11 @@ type StoryElement = Pick<IconElement, 'type'>;
 declare global {
   interface HTMLElementTagNameMap {
     'app-icon': StoryElement;
-    'app-flex': StoryElement;
   }
   /* eslint-disable @typescript-eslint/no-namespace */
   namespace JSX {
     interface IntrinsicElements {
       'app-icon': StoryElement;
-      'app-flex': StoryElement;
     }
   }
 }
@@ -40,27 +39,8 @@ const icons: string[] = [
 ];
 
 const IconCard = ({ title, children }: { title?: string; children?: React.ReactNode }) => (
-  <app-flex
-    direction="column"
-    style={{
-      width: '15rem',
-      height: '12rem',
-      background: 'var(--prim-dark)',
-      overflow: 'hidden',
-      borderRadius: 'var(--S4)',
-    }}
-  >
-    <span
-      style={{
-        textAlign: 'center',
-        fontWeight: 'bold',
-        color: 'var(--prim-text)',
-        background: 'var(--prim-light)',
-        padding: 'var(--S4)',
-      }}
-    >
-      {title}
-    </span>
+  <app-flex class={classes['icon-decorator']} direction="column">
+    <span>{title}</span>
     <app-flex align="center" justify="center" style={{ height: '100%', padding: 'var(--S5)' }}>
       {children}
     </app-flex>
@@ -70,20 +50,20 @@ export default {
   title: 'Primitives',
   component: Icon,
   decorators: [
-    Story => (
+    (Story, context) => (
       <app-flex direction="column" align="center" gap={4}>
-        <IconCard>
+        <IconCard title={context.args.type}>
           <Story />
         </IconCard>
 
-        {/* <IconButton
+        <app-button
           icon="hero"
           onClick={() => {
             window.open('https://heroicons.com/');
           }}
         >
           heroicons
-        </IconButton> */}
+        </app-button>
         <app-flex gap={3} wrap="wrap" justify="center">
           {icons.map(item => (
             <IconCard title={item}>

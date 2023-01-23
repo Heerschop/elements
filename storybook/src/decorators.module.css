@@ -34,3 +34,19 @@
 .flex-decorator app-flex div:nth-of-type(4)::after {
   content: '4';
 }
+
+.icon-decorator {
+  width: 15rem;
+  height: 12rem;
+  background: var(--prim-dark);
+  overflow: hidden;
+  border-radius: var(--S4);
+}
+
+.icon-decorator span {
+  text-align: center;
+  font-weight: bold;
+  color: var(--prim-text);
+  background: var(--prim-light);
+  padding: var(--S4);
+}
