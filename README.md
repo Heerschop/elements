@@ -13,7 +13,7 @@ cd storybook
 npm install
 npm start
 
-# Run Elemets Example
+# Run Elements Example
 npx lite-server
 # Open: http://localhost:3000/example/index.html
 ```
