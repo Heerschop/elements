@@ -5,7 +5,7 @@ import { normalize } from './common';
 
 // https://www.npmjs.com/package/@lit-labs/react
 
-type StoryElement = Pick<ButtonElement, 'disabled'> & { children?: React.ReactNode };
+type StoryElement = Pick<ButtonElement, 'disabled' | 'variant' | 'size'> & { children?: React.ReactNode };
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -24,6 +24,10 @@ export const Button = ({ ...args }: StoryElement = {}) => <app-button {...args}>
 export default {
   title: 'Primitives',
   component: Button,
+  argTypes: {
+    variant: { control: { type: 'select' } },
+    size: { control: { type: 'select' } },
+  },
   decorators: [
     Story => (
       <div>

@@ -22,6 +22,9 @@ export class IconElement extends LitElement {
     | 'chevron-up';
 
   static styles = css`
+    :host {
+      display: flex;
+    }
     svg {
       color: var(--prim-text);
       width: 2.2rem;

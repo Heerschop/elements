@@ -45,8 +45,9 @@
 
 .icon-decorator app-icon:hover {
   transform: scale(2.5);
+  transform-origin: center;
   background: #ffffff10;
-  border: 0.1rem solid var(--prim-text);
+  border: 0.1rem solid #ffffff20;
   transition: all 50ms ease-in-out;
 }
 
@@ -56,4 +57,28 @@
   color: var(--prim-text);
   background: var(--prim-light);
   padding: var(--S4);
+}
+
+.color-decorator {
+  width: 15rem;
+  height: 12rem;
+  background: var(--prim-dark);
+  overflow: hidden;
+  border-radius: var(--S4);
+  filter: drop-shadow(0 0 var(--S1) #00000070);
+}
+
+.color-decorator span {
+  text-align: center;
+  font-weight: bold;
+  color: var(--prim-text);
+  background: var(--prim-light);
+  padding: var(--S4);
+}
+
+.color-decorator app-flex {
+  height: 100%;
+  padding: var(--S5);
+  font-weight: bold;
+  font-size: var(--S6);
 }

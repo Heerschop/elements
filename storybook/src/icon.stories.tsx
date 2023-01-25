@@ -40,7 +40,7 @@ const icons: string[] = [
 
 const IconCard = ({ title, children }: { title?: string; children?: React.ReactNode }) => (
   <app-flex class={classes['icon-decorator']} direction="column">
-    <span>{title}</span>
+    <span>{title || 'default'}</span>
     <app-flex align="center" justify="center" style={{ height: '100%', padding: 'var(--S5)' }}>
       {children}
     </app-flex>
@@ -62,6 +62,7 @@ export default {
             window.open('https://heroicons.com/');
           }}
         >
+          <app-icon></app-icon>
           heroicons
         </app-button>
         <app-flex gap={3} wrap="wrap" justify="center">
