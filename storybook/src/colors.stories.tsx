@@ -1,7 +1,39 @@
 import classes from './decorators.module.css';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import '../../dist/primitives';
-import { normalize } from './common';
+
+const code = `
+:root {
+  font-size: 62.5%;
+
+  --prim-main: #383a3f;
+  --prim-light: #62646a;
+  --prim-dark: #1f2124;
+  --prim-text: #ffffffe0;
+
+  --sec-main: #f68657;
+  --sec-light: #f6b352;
+  --sec-dark: #be572c;
+  --sec-text: #000000e0;
+
+  --S0: 0rem;
+  --S1: 0.2rem;
+  --S2: 0.4rem;
+  --S3: 0.6rem;
+  --S4: 0.8rem;
+  --S5: 1.2rem;
+  --S6: 1.6rem;
+  --S7: 2rem;
+  --S8: 2.4rem;
+  --S9: 2.8rem;
+  --S10: 3.2rem;
+  --S11: 3.6rem;
+  --S12: 4rem;
+  --S13: 4.2rem;
+
+  --MAX: 999;
+}
+`;
 
 // https://www.npmjs.com/package/@lit-labs/react
 
@@ -80,6 +112,15 @@ export default {
   },
 
   decorators: [(Story, context) => Colors(context.args)],
+  parameters: {
+    docs: {
+      source: {
+        code: code,
+        language: 'css',
+        type: 'auto',
+      },
+    },
+  },
 } as ComponentMeta<typeof Colors>;
 
 //const Template: ComponentStory<typeof Colors> = args => Colors(normalize(args));
