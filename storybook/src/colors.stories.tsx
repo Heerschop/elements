@@ -2,39 +2,6 @@ import classes from './decorators.module.css';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import '../../dist/primitives';
 
-const code = `
-:root {
-  font-size: 62.5%;
-
-  --prim-main: #383a3f;
-  --prim-light: #62646a;
-  --prim-dark: #1f2124;
-  --prim-text: #ffffffe0;
-
-  --sec-main: #f68657;
-  --sec-light: #f6b352;
-  --sec-dark: #be572c;
-  --sec-text: #000000e0;
-
-  --S0: 0rem;
-  --S1: 0.2rem;
-  --S2: 0.4rem;
-  --S3: 0.6rem;
-  --S4: 0.8rem;
-  --S5: 1.2rem;
-  --S6: 1.6rem;
-  --S7: 2rem;
-  --S8: 2.4rem;
-  --S9: 2.8rem;
-  --S10: 3.2rem;
-  --S11: 3.6rem;
-  --S12: 4rem;
-  --S13: 4.2rem;
-
-  --MAX: 999;
-}
-`;
-
 // https://www.npmjs.com/package/@lit-labs/react
 
 type StoryElement = {
@@ -49,7 +16,6 @@ type StoryElement = {
 };
 
 const rootElement = document.querySelector<HTMLElement>(':root');
-//const rootElement = document.getElementsByName<HTMLElement>(':root');
 
 const ColorCard = ({ color, background, label }: { color: string; background: string; label: string }) => (
   <app-flex class={classes['color-decorator']} direction="column">
@@ -68,11 +34,8 @@ const ColorCard = ({ color, background, label }: { color: string; background: st
 );
 
 export const Colors = ({ ...args }: StoryElement = {}) => {
-  console.log('args:', args);
-
   if (rootElement) {
     for (const [key, value] of Object.entries(args)) {
-      console.log(key, value);
       rootElement.style.setProperty('--' + key, value);
     }
   }
@@ -110,53 +73,55 @@ export default {
     'sec-dark': { control: { type: 'color' } },
     'sec-text': { control: { type: 'color' } },
   },
-
-  decorators: [(Story, context) => Colors(context.args)],
   parameters: {
     docs: {
       source: {
-        code: code,
+        //code: code.value,
         language: 'css',
-        type: 'auto',
+        //type: 'dynamic',
+        //format: true,
       },
     },
   },
 } as ComponentMeta<typeof Colors>;
 
-//const Template: ComponentStory<typeof Colors> = args => Colors(normalize(args));
-const Template: ComponentStory<any> = args => {
-  return `
-  :root {
-    font-size: 62.5%;
+const Template: ComponentStory<typeof Colors> = (args, context) => {
+  console.log('context.args:', context.args);
 
-    --prim-main: #383a3f;
-    --prim-light: #62646a;
-    --prim-dark: #1f2124;
-    --prim-text: #ffffffe0;
+  context.parameters.docs.source.code = `
+:root {
+  font-size: 62.5%;
 
-    --sec-main: #f68657;
-    --sec-light: #f6b352;
-    --sec-dark: #be572c;
-    --sec-text: #000000e0;
+  --prim-main: ${context.args['prim-main']};
+  --prim-light: ${context.args['prim-light']};
+  --prim-dark: ${context.args['prim-dark']};
+  --prim-text: ${context.args['prim-text']};
 
-    --S0: 0rem;
-    --S1: 0.2rem;
-    --S2: 0.4rem;
-    --S3: 0.6rem;
-    --S4: 0.8rem;
-    --S5: 1.2rem;
-    --S6: 1.6rem;
-    --S7: 2rem;
-    --S8: 2.4rem;
-    --S9: 2.8rem;
-    --S10: 3.2rem;
-    --S11: 3.6rem;
-    --S12: 4rem;
-    --S13: 4.2rem;
+  --sec-main: ${context.args['sec-main']};
+  --sec-light: ${context.args['sec-light']};
+  --sec-dark: ${context.args['sec-dark']};
+  --sec-text: ${context.args['sec-text']};
 
-    --MAX: 999;
-  }
-  ` as any;
+  --S0: 0rem;
+  --S1: 0.2rem;
+  --S2: 0.4rem;
+  --S3: 0.6rem;
+  --S4: 0.8rem;
+  --S5: 1.2rem;
+  --S6: 1.6rem;
+  --S7: 2rem;
+  --S8: 2.4rem;
+  --S9: 2.8rem;
+  --S10: 3.2rem;
+  --S11: 3.6rem;
+  --S12: 4rem;
+  --S13: 4.2rem;
+
+  --MAX: 999;
+}
+  `;
+
+  return Colors(args);
 };
 
 export const colors = Template.bind({});
