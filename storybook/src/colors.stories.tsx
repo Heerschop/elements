@@ -2,6 +2,7 @@ import classes from './decorators.module.css';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import '../../dist/primitives';
 import { defaultColors, globalCSS } from './common';
+import { useArgs } from '@storybook/client-api';
 
 // https://www.npmjs.com/package/@lit-labs/react
 
@@ -85,11 +86,30 @@ export default {
 } as ComponentMeta<typeof Colors>;
 
 const Template: ComponentStory<typeof Colors> = (args, context) => {
+  const [, updateArgs] = useArgs();
+
   context.parameters.docs.source.code = globalCSS(context.args);
 
-  return Colors(args);
+  return (
+    <div>
+      <button
+        onClick={() => {
+          updateArgs({
+            'prim-main': '#ffff00',
+          });
+          console.log('aaaa');
+        }}
+      >
+        Test
+      </button>
+
+      <Colors {...args} />
+    </div>
+  );
 };
 
 export const colors = Template.bind({});
 
-colors.args = defaultColors;
+colors.args = {
+  ...defaultColors,
+};
