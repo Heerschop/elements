@@ -1,14 +1,29 @@
 import { css_beautify, html_beautify } from 'js-beautify';
 
-export const defaultColors: { [key: string]: string } = {
-  'prim-main': '#383a3f',
-  'prim-light': '#62646a',
-  'prim-dark': '#1f2124',
-  'prim-text': '#ffffffe0',
-  'sec-main': '#f68657',
-  'sec-light': '#f6b352',
-  'sec-dark': '#be572c',
-  'sec-text': '#000000e0',
+type Colors = { [key: string]: string };
+type Themes = { [key: string]: Colors };
+
+export const colorThemes: Themes = {
+  'theme-1': {
+    'prim-main': '#383a3f',
+    'prim-light': '#62646a',
+    'prim-dark': '#1f2124',
+    'prim-text': '#ffffffe0',
+    'sec-main': '#f68657',
+    'sec-light': '#f6b352',
+    'sec-dark': '#be572c',
+    'sec-text': '#000000e0',
+  },
+  'theme-2': {
+    'prim-main': '#546e7a',
+    'prim-light': '#819ca9',
+    'prim-dark': '#29434e',
+    'prim-text': '#ffffffe0',
+    'sec-main': '#d32f2f',
+    'sec-light': '#ff6659',
+    'sec-dark': '#9a0007',
+    'sec-text': '#ffffffe0',
+  },
 };
 
 export function normalize(args: { [key: string]: any } = {}): { [key: string]: any } {

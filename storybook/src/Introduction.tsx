@@ -1,4 +1,4 @@
-import { defaultColors, globalCSS } from './common';
+import { globalCSS } from './common';
 import { Source } from '@storybook/addon-docs';
 
 export const GlobalCSS = () => {
@@ -13,9 +13,14 @@ export const GlobalCSS = () => {
     }
   }
 
-  for (const [key, value] of Object.entries(defaultColors)) {
-    if (!args[key]) args[key] = value;
-  }
+  // for (const [key, value] of Object.entries(defaultColors)) {
+  //   if (!args[key]) args[key] = value;
+  // }
 
-  return <Source language="css" dark format={false} code={globalCSS(args)} />;
+  return (
+    <>
+      <h2>Global CSS element variables</h2>
+      <Source language="css" dark format={false} code={globalCSS(args)} />
+    </>
+  );
 };

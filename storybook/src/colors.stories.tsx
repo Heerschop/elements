@@ -1,12 +1,13 @@
 import classes from './decorators.module.css';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import '../../dist/primitives';
-import { defaultColors, globalCSS } from './common';
+import { colorThemes, globalCSS } from './common';
 import { useArgs } from '@storybook/client-api';
 
 // https://www.npmjs.com/package/@lit-labs/react
 
 type StoryElement = {
+  theme?: string; //keyof typeof colorThemes;
   'prim-main'?: string;
   'prim-light'?: string;
   'prim-dark'?: string;
@@ -35,37 +36,36 @@ const ColorCard = ({ color, background, label }: { color: string; background: st
   </app-flex>
 );
 
-export const Colors = ({ ...args }: StoryElement = {}) => {
-  if (rootElement) {
-    for (const [key, value] of Object.entries(args)) {
-      rootElement.style.setProperty('--' + key, value);
-    }
-  }
-
-  return (
-    <app-flex gap={4} wrap="wrap" justify="center" direction="column" align="center">
-      <h1 {...args}>Primary</h1>
-      <app-flex gap={4} wrap="wrap" justify="center">
-        <ColorCard color="var(--prim-text)" background="var(--prim-main)" label="prim-main" />
-        <ColorCard color="var(--prim-text)" background="var(--prim-light)" label="prim-light" />
-        <ColorCard color="var(--prim-text)" background="var(--prim-dark)" label="prim-dark" />
-        <ColorCard color="var(--prim-main)" background="var(--prim-text)" label="prim-text" />
-      </app-flex>
-      <h1>Secondary</h1>
-      <app-flex gap={4} wrap="wrap" justify="center">
-        <ColorCard color="var(--sec-text)" background="var(--sec-main)" label="sec-main" />
-        <ColorCard color="var(--sec-text)" background="var(--sec-light)" label="sec-light" />
-        <ColorCard color="var(--sec-text)" background="var(--sec-dark)" label="sec-dark" />
-        <ColorCard color="var(--sec-main)" background="var(--sec-text)" label="sec-text" />
-      </app-flex>
+export const Colors = ({ ...args }: StoryElement = {}) => (
+  <app-flex gap={4} wrap="wrap" justify="center" direction="column" align="center">
+    <h1 {...args}>Primary</h1>
+    <app-flex gap={4} wrap="wrap" justify="center">
+      <ColorCard color="var(--prim-text)" background="var(--prim-main)" label="prim-main" />
+      <ColorCard color="var(--prim-text)" background="var(--prim-light)" label="prim-light" />
+      <ColorCard color="var(--prim-text)" background="var(--prim-dark)" label="prim-dark" />
+      <ColorCard color="var(--prim-main)" background="var(--prim-text)" label="prim-text" />
     </app-flex>
-  );
-};
+    <h1>Secondary</h1>
+    <app-flex gap={4} wrap="wrap" justify="center">
+      <ColorCard color="var(--sec-text)" background="var(--sec-main)" label="sec-main" />
+      <ColorCard color="var(--sec-text)" background="var(--sec-light)" label="sec-light" />
+      <ColorCard color="var(--sec-text)" background="var(--sec-dark)" label="sec-dark" />
+      <ColorCard color="var(--sec-main)" background="var(--sec-text)" label="sec-text" />
+    </app-flex>
+  </app-flex>
+);
 
 export default {
   title: 'Primitives',
   component: Colors,
   argTypes: {
+    'theme': {
+      options: Object.keys(colorThemes),
+      control: { type: 'select' },
+      onselect: () => {
+        console.log('AAAAAAAAAAAAAAA');
+      },
+    },
     'prim-main': { control: { type: 'color' } },
     'prim-light': { control: { type: 'color' } },
     'prim-dark': { control: { type: 'color' } },
@@ -85,31 +85,32 @@ export default {
   },
 } as ComponentMeta<typeof Colors>;
 
+let selectedTheme: string | undefined = undefined;
+
 const Template: ComponentStory<typeof Colors> = (args, context) => {
   const [, updateArgs] = useArgs();
 
-  context.parameters.docs.source.code = globalCSS(context.args);
+  if (args?.theme && args?.theme !== selectedTheme) {
+    selectedTheme = args?.theme;
 
-  return (
-    <div>
-      <button
-        onClick={() => {
-          updateArgs({
-            'prim-main': '#ffff00',
-          });
-          console.log('aaaa');
-        }}
-      >
-        Test
-      </button>
+    const colors = colorThemes[selectedTheme];
 
-      <Colors {...args} />
-    </div>
-  );
+    if (colors) updateArgs(colors);
+  }
+
+  if (rootElement && args) {
+    for (const [key, value] of Object.entries(args)) {
+      rootElement.style.setProperty('--' + key, value);
+    }
+
+    context.parameters.docs.source.code = globalCSS(args);
+  }
+
+  return <Colors {...args} />;
 };
 
 export const colors = Template.bind({});
 
 colors.args = {
-  ...defaultColors,
+  theme: Object.keys(colorThemes)[0],
 };
