@@ -3,6 +3,7 @@
 HTML Elements
 
 ### Basic Setup
+
 ```bash
 # Build and Watch Lit Elemets
 npm install
@@ -19,6 +20,7 @@ npx lite-server
 ```
 
 ### Update Packages
+
 ```bash
 npx npm-check-updates
 ```
