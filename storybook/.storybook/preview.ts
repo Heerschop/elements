@@ -2,7 +2,7 @@ import '../src/global.css';
 import { themes } from '@storybook/theming';
 import { StoryContext } from '@storybook/types';
 
-function reactToHtml(source: string): string {
+function sanitise(source: string): string {
   const patterns = [
     // [/\s\w+\=false/g, ''], // Removes all attributes with a value of "false"
     // [/(\s)(\w+)\=true/g, '$1$2'], // Removes the value of attributes which are "true"
@@ -15,6 +15,7 @@ function reactToHtml(source: string): string {
 
   return source;
 }
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -23,15 +24,11 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  darkMode: {
-    dark: { ...themes.dark },
-    light: { ...themes.normal },
-  },
   docs: {
-    //container: DocsContainer,
-    transformSource: (source: string, storyContext: StoryContext) =>
-      storyContext.viewMode === 'docs' ? storyContext.undecoratedStoryFn(storyContext) : reactToHtml(source),
+    theme: themes.dark,
     source: {
+      transformSource: (source: string, storyContext: StoryContext) =>
+        storyContext.viewMode === 'docs' ? storyContext.undecoratedStoryFn(storyContext) : sanitise(source),
       excludeDecorators: true,
     },
   },
