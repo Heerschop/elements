@@ -10,7 +10,7 @@ npm start
 
 # Build and Watch Stortbook
 cd storybook
-npm install
+npm install --force
 npm start
 
 # Run Elements Example
