@@ -62,9 +62,12 @@
     "@storybook/react": "^7.0.0-beta.40",
     "@storybook/react-webpack5": "^7.0.0-beta.40",
     "@storybook/testing-library": "^0.0.14-next.1",
+    "@types/js-beautify": "^1.13.3",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "js-beautify": "^1.14.7",
     "prop-types": "^15.8.1",
     "storybook": "^7.0.0-beta.40",
+    "storybook-dark-mode": "^2.0.5",
     "webpack": "^5.75.0"
   }
 }
