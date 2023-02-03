@@ -4,7 +4,9 @@ import '../../dist/primitives';
 import { ButtonElement } from '../../dist/primitives';
 import { normalize } from './common';
 
-type StoryElement = Pick<ButtonElement, 'disabled' | 'variant' | 'size'> & { children?: React.ReactNode };
+type StoryElement = Pick<ButtonElement, 'disabled' | 'variant' | 'size'> & {
+  children?: React.ReactNode;
+};
 
 declare global {
   interface HTMLElementTagNameMap {
