@@ -1,0 +1,65 @@
+{
+  "name": "elements",
+  "source": "src/primitives.ts",
+  "types": "dist/primitives.d.ts",
+  "version": "1.0.0",
+  "description": "HTML Elements",
+  "targets": {
+    "elements": {
+      "includeNodeModules": true,
+      "engines": {
+        "browsers": "last 2 versions, not dead"
+      }
+    }
+  },
+  "scripts": {
+    "start": "parcel watch",
+    "build": "parcel build",
+    "style:write": "prettier --write . && eslint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heerschop/elements.git"
+  },
+  "author": "Bas Heerschop",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Heerschop/elements/issues"
+  },
+  "homepage": "https://github.com/Heerschop/elements#readme",
+  "devDependencies": {
+    "@parcel/packager-ts": "^2.8.3",
+    "@parcel/transformer-typescript-types": "^2.8.3",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "eslint": "^8.38.0",
+    "lit": "^2.7.2",
+    "parcel": "^2.8.3",
+    "parcel-reporter-files": "github:Heerschop/parcel-reporter-files#main",
+    "prettier": "^2.8.7",
+    "typescript": "^5.0.4"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "quoteProps": "preserve",
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "overrides": [
+      {
+        "files": "*.json",
+        "options": {
+          "semi": true,
+          "printWidth": 24
+        }
+      }
+    ]
+  },
+  "parcel-reporter-files": {
+    "remove": "*"
+  }
+}
