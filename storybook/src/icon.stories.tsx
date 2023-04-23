@@ -55,9 +55,9 @@ export default {
         </IconCard>
 
         <app-button
-          // onClick={() => {
-          //   window.open('https://heroicons.com/');
-          // }}
+        // onClick={() => {
+        //   window.open('https://heroicons.com/');
+        // }}
         >
           <app-icon></app-icon>
           heroicons
