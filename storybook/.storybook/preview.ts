@@ -29,8 +29,9 @@ const preview: Preview = {
     docs: {
       theme: themes.dark,
       source: {
-        transformSource: (source: string, storyContext: StoryContext) =>
-          storyContext.viewMode === 'docs' ? storyContext.undecoratedStoryFn(storyContext) : sanitise(source),
+        // transformSource: (source: string, storyContext: StoryContext) =>
+        //   storyContext.viewMode === 'docs' ? storyContext.undecoratedStoryFn(storyContext) : sanitise(source),
+        transformSource: (source: string, storyContext: StoryContext) => sanitise(source),
         excludeDecorators: true,
       },
     },
