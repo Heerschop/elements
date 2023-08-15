@@ -1,8 +1,8 @@
 .flex-decorator > app-flex {
-  padding: var(--S5);
+  padding: var(--app-S5);
   width: 40rem;
   height: 40rem;
-  border: var(--S1) solid var(--prim-light);
+  border: var(--app-S1) solid var(--app-prim-light);
   overflow: hidden;
   resize: both;
 }
@@ -10,13 +10,13 @@
 .flex-decorator app-flex div {
   width: 4rem;
   height: 4rem;
-  color: var(--prim-text);
+  color: var(--app-prim-text);
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--prim-dark);
-  border: var(--S1) solid var(--prim-light);
+  background: var(--app-prim-dark);
+  border: var(--app-S1) solid var(--app-prim-light);
 }
 
 .flex-decorator app-flex div:nth-of-type(1)::after {
@@ -38,9 +38,9 @@
 .icon-decorator {
   width: 15rem;
   height: 12rem;
-  background: var(--prim-dark);
+  background: var(--app-prim-dark);
   overflow: hidden;
-  border-radius: var(--S4);
+  border-radius: var(--app-S4);
 }
 
 .icon-decorator app-icon:hover {
@@ -54,31 +54,31 @@
 .icon-decorator span {
   text-align: center;
   font-weight: bold;
-  color: var(--prim-text);
-  background: var(--prim-light);
-  padding: var(--S4);
+  color: var(--app-prim-text);
+  background: var(--app-prim-light);
+  padding: var(--app-S4);
 }
 
 .color-decorator {
   width: 15rem;
   height: 12rem;
-  background: var(--prim-dark);
+  background: var(--app-prim-dark);
   overflow: hidden;
-  border-radius: var(--S4);
-  filter: drop-shadow(0 0 var(--S1) #00000070);
+  border-radius: var(--app-S4);
+  filter: drop-shadow(0 0 var(--app-S1) #00000070);
 }
 
 .color-decorator span {
   text-align: center;
   font-weight: bold;
-  color: var(--prim-text);
-  background: var(--prim-light);
-  padding: var(--S4);
+  color: var(--app-prim-text);
+  background: var(--app-prim-light);
+  padding: var(--app-S4);
 }
 
 .color-decorator app-flex {
   height: 100%;
-  padding: var(--S5);
+  padding: var(--app-S5);
   font-weight: bold;
-  font-size: var(--S6);
+  font-size: var(--app-S6);
 }

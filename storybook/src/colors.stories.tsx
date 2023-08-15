@@ -1,7 +1,7 @@
 import classes from './decorators.module.css';
 import { ComponentStory, ComponentMeta, Meta, StoryFn } from '@storybook/react';
 import '../../dist/primitives';
-import { colorThemes, globalCSS } from './common';
+import { colorThemes, globalCSS, stylePrefix } from './common';
 import { useArgs } from '@storybook/client-api';
 
 // https://www.npmjs.com/package/@lit-labs/react
@@ -42,17 +42,17 @@ export const Colors = (args: StoryElement) => (
   <app-flex gap={4} wrap="wrap" justify="center" direction="column" align="center">
     <h1 {...args}>Primary</h1>
     <app-flex gap={4} wrap="wrap" justify="center">
-      <ColorCard color="var(--prim-text)" background="var(--prim-main)" label="prim-main" />
-      <ColorCard color="var(--prim-text)" background="var(--prim-light)" label="prim-light" />
-      <ColorCard color="var(--prim-text)" background="var(--prim-dark)" label="prim-dark" />
-      <ColorCard color="var(--prim-main)" background="var(--prim-text)" label="prim-text" />
+      <ColorCard color="var(--app-prim-text)" background="var(--app-prim-main)" label="app-prim-main" />
+      <ColorCard color="var(--app-prim-text)" background="var(--app-prim-light)" label="app-prim-light" />
+      <ColorCard color="var(--app-prim-text)" background="var(--app-prim-dark)" label="app-prim-dark" />
+      <ColorCard color="var(--app-prim-main)" background="var(--app-prim-text)" label="app-prim-text" />
     </app-flex>
     <h1>Secondary</h1>
     <app-flex gap={4} wrap="wrap" justify="center">
-      <ColorCard color="var(--sec-text)" background="var(--sec-main)" label="sec-main" />
-      <ColorCard color="var(--sec-text)" background="var(--sec-light)" label="sec-light" />
-      <ColorCard color="var(--sec-text)" background="var(--sec-dark)" label="sec-dark" />
-      <ColorCard color="var(--sec-main)" background="var(--sec-text)" label="sec-text" />
+      <ColorCard color="var(--app-sec-text)" background="var(--app-sec-main)" label="app-sec-main" />
+      <ColorCard color="var(--app-sec-text)" background="var(--app-sec-light)" label="app-sec-light" />
+      <ColorCard color="var(--app-sec-text)" background="var(--app-sec-dark)" label="app-sec-dark" />
+      <ColorCard color="var(--app-sec-main)" background="var(--app-sec-text)" label="app-sec-text" />
     </app-flex>
   </app-flex>
 );
@@ -74,6 +74,7 @@ export default {
     'prim-light': { control: { type: 'color' } },
     'prim-dark': { control: { type: 'color' } },
     'prim-text': { control: { type: 'color' } },
+
     'sec-main': { control: { type: 'color' } },
     'sec-light': { control: { type: 'color' } },
     'sec-dark': { control: { type: 'color' } },
@@ -100,11 +101,21 @@ export default {
       }
 
       if (rootElement && args) {
+        rootElement.style.cssText = '';
+        console.log('rootElement.style.cssText:', rootElement.style.cssText);
+        console.log('args:', args);
+
+        // for (const [key, value] of Object.entries(colorThemes[selectedTheme])) {
+        //   rootElement.style.setProperty('--' + stylePrefix + key, value);
+        // }
+
         for (const [key, value] of Object.entries(args)) {
-          rootElement.style.setProperty('--' + key, value);
+          rootElement.style.setProperty('--' + stylePrefix + key, value);
         }
 
+        //rootElement.style.cssText = 'aaaa';
         context.parameters.docs.source.code = globalCSS(args);
+        //context.parameters.docs.source.code = '';
       }
 
       return <Story />;

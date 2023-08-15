@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/react';
 import '../src/global.css';
 import { themes } from '@storybook/theming';
 import { StoryContext } from '@storybook/types';
-import { colorThemes } from '../src/common';
+import { colorThemes, stylePrefix } from '../src/common';
 
 function sanitise(source: string): string {
   const patterns = [
@@ -43,7 +43,7 @@ const rootElement = document.querySelector<HTMLElement>(':root');
 
 if (rootElement) {
   for (const [key, value] of Object.entries(colorThemes['theme-1'])) {
-    rootElement.style.setProperty('--' + key, value);
+    rootElement.style.setProperty('--' + stylePrefix + key, value);
   }
 }
 

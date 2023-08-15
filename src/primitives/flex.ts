@@ -1,9 +1,10 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators';
+import { getPrefixes } from './prefixes';
 
-const elementPrefix = document?.currentScript?.attributes.getNamedItem?.('prefix')?.value ?? 'app';
+const { elementPrefix, stylePrefix } = getPrefixes();
 
-@customElement(elementPrefix + '-flex')
+@customElement(elementPrefix + 'flex')
 export class FlexElement extends LitElement {
   @property({ type: String })
   direction?: 'row' | 'column';
@@ -47,7 +48,7 @@ export class FlexElement extends LitElement {
       <style>
         :host {
           display: flex;
-          gap: ${this.gap !== undefined ? `var(--S${this.gap})` : undefined};
+          gap: ${this.gap !== undefined ? `var(--${unsafeCSS(stylePrefix)}S${this.gap})` : undefined};
           flex-direction: ${this.direction};
           align-items: ${FlexElement.alignItems[this.align!]};
           justify-content: ${FlexElement.justifyContent[this.justify!]};
